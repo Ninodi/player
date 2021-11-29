@@ -82,6 +82,7 @@ let randomBackground = () => {
 
 
 shuffleBtn.addEventListener('click', () => {
+    randomBackground()
     let random_index = Number.parseInt(Math.random() * songs.length);
     trackIndex = random_index;
     currTrack.src = songs[trackIndex].music
@@ -156,7 +157,7 @@ repeat.addEventListener("click", () => {
     playBtn.innerHTML = '<i class="fas fa-pause-circle play"></i>'
     imgContaier.classList.add("rotate")
     wave.classList.add('loader')
-    
+
     let currIndex = trackIndex
     currTrack.src = songs[currIndex].music
     currTrack.play()
