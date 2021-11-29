@@ -153,6 +153,10 @@ prevBtn.addEventListener('click', () => {
 })
 
 repeat.addEventListener("click", () => {
+    playBtn.innerHTML = '<i class="fas fa-pause-circle play"></i>'
+    imgContaier.classList.add("rotate")
+    wave.classList.add('loader')
+    
     let currIndex = trackIndex
     currTrack.src = songs[currIndex].music
     currTrack.play()
