@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+</head>
+<body>
+    <div class="playerBack">
+        <div class="playerWrapper">
+            <div class="player">
+                <div class="nowPlaying"></div>
+                <div class="imgWrapper">
+                    <img src="img/weekend.jpg" alt="" class="img">
+                </div>
+                <div class="name">One Right Now</div>
+                <div class="artist">Post Malone, The Weekend</div>
+                <div class="sliderContainer">
+                    <div class="current-time">00:00</div>
+                    <input type="range" min="1" max="100" value="0" class="trackslider seek_slider" onchange="seekTo()">
+                    <div class="total-duration">00:00</div>
+                </div>
+                <div class="sliderContainer">
+                    <i class="fas fa-volume-off"></i>
+                    <input type="range" min="1" max="100" value="0" class="volume_slider" onchange="setVolume()">
+                    <i class="fas fa-volume-up"></i>
+                </div>
+                <div class="controlers">
+                    <div class="shuffle">
+                        <i class="fas fa-random fa-2x" title="random"></i>
+                    </div>
+                    <div class="prevbtn">
+                        <i class="fa fa-step-backward fa-2x"></i>
+                    </div>
+                    <div class="playbtn" >
+                        <!-- <i class="fas fa-pause-circle play"></i> -->
+                        <i class="fa fa-play-circle fa-5x pause" onclick="playSong()"></i>
+                    </div>
+                    <div class="nextbtn">
+                        <i class="fa fa-step-forward fa-2x"></i>
+                    </div>
+                    <div class="repeat">
+                        <i class="fas fa-redo"></i>
+                    </div>
+                </div>
+                <div id="wave">
+                    <span class="stroke"></span>
+                    <span class="stroke"></span>
+                    <span class="stroke"></span>
+                    <span class="stroke"></span>
+                    <span class="stroke"></span>
+                    <span class="stroke"></span>
+                    <span class="stroke"></span>
+                </div>  
+            </div>
+        </div>
+    </div>
+
+
+    <script src="main.js"></script>
+</body>
+</html>

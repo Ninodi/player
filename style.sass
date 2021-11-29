@@ -1,0 +1,135 @@
+// @import "./fontawesome/scss/fontawesome.scss"
+
+*
+    padding: 0
+    margin: 0
+    text-decoration: 0
+    list-style: 0
+    box-sizing: border-box
+    font-family: sans-serif
+
+
+.playerBack
+    width: 100vw
+    height: 100vh
+    background-color: #fbc2eb
+    background-color: #ebc0fd
+    display: flex
+    justify-content: center
+    align-items: center
+
+.playerWrapper
+    width: 400px
+    height: 500px
+    border-radius: 20px
+    // border: 1px solid black
+    overflow: hidden
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px
+
+.player
+    width: 100%
+    height: 100%
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: space-around
+    padding-top: 40px
+    padding-bottom: 40px
+    // background-color: #fbc2eb
+    // background-color: #ebc0fd
+    & > div
+        margin-bottom: 10px
+
+.imgWrapper
+    width: 120px
+    height: 120px
+    border-radius: 50%
+    overflow: hidden
+    box-shadow: 0px 6px 5px #fff
+    img
+        width: 100%
+        height: 100%
+.rotate
+    animation: rotate 6s infinite linear
+    
+@keyframes rotate
+    0%
+        transform: rotate(0deg)
+    100%
+        transform: rotate(360deg)
+
+.name
+    font-weight: 900
+.artist
+    font-weight: 600
+.sliderContainer
+    display: flex
+    align-items: center
+
+.trackslider
+    width: 200px
+
+input
+    margin-left: 10px
+    margin-right: 10px 
+
+.controlers
+    display: flex
+    align-items: center
+    justify-content: space-around
+    width: 100%
+
+.controlers
+    margin-bottom: 20px !important
+    margin-top: 5px
+.controlers i
+    font-size: 25px
+    color: #5D6D7E 
+    color: #111
+    cursor: pointer
+    &:hover
+        opacity: 0.7
+
+.fa.fa-play-circle.fa-5x, .fas.fa-pause-circle
+    font-size: 40px
+
+.loader
+    height: 70px
+    display: flex
+    justify-content: center
+    align-items: center
+
+#wave
+    height: 70px
+
+.loader .stroke
+    background: #f1f1f1
+    height: 120%
+    width: 10px
+    border-radius: 50px
+    margin: 0px 5px
+    animation: animate 1.4s linear infinite
+
+
+@keyframes animate
+    50%
+        height: 20%
+        background: #4286f4
+
+    100%
+        height: 100%
+
+.stroke:nth-child(1)
+    animation-delay: 0s
+.stroke:nth-child(2)
+    animation-delay: 0.3s
+.stroke:nth-child(3)
+    animation-delay: 0.6s
+.stroke:nth-child(4)
+    animation-delay: 0.9s
+.stroke:nth-child(5)
+    animation-delay: 0.6s
+.stroke:nth-child(6)
+    animation-delay: 0.3s
+.stroke:nth-child(7)
+    animation-delay: 0s

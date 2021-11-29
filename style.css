@@ -1,0 +1,240 @@
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-text-decoration: 0;
+          text-decoration: 0;
+  list-style: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.playerBack {
+  width: 100vw;
+  height: 100vh;
+  background-color: #fbc2eb;
+  background-color: #ebc0fd;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.playerWrapper {
+  width: 400px;
+  height: 500px;
+  border-radius: 20px;
+  overflow: hidden;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+          box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.player {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.player > div {
+  margin-bottom: 10px;
+}
+
+.imgWrapper {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  -webkit-box-shadow: 0px 6px 5px #fff;
+          box-shadow: 0px 6px 5px #fff;
+}
+
+.imgWrapper img {
+  width: 100%;
+  height: 100%;
+}
+
+.rotate {
+  -webkit-animation: rotate 6s infinite linear;
+          animation: rotate 6s infinite linear;
+}
+
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+.name {
+  font-weight: 900;
+}
+
+.artist {
+  font-weight: 600;
+}
+
+.sliderContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.trackslider {
+  width: 200px;
+}
+
+input {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.controlers {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%;
+}
+
+.controlers {
+  margin-bottom: 20px !important;
+  margin-top: 5px;
+}
+
+.controlers i {
+  font-size: 25px;
+  color: #5D6D7E;
+  color: #111;
+  cursor: pointer;
+}
+
+.controlers i:hover {
+  opacity: 0.7;
+}
+
+.fa.fa-play-circle.fa-5x, .fas.fa-pause-circle {
+  font-size: 40px;
+}
+
+.loader {
+  height: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#wave {
+  height: 70px;
+}
+
+.loader .stroke {
+  background: #f1f1f1;
+  height: 120%;
+  width: 10px;
+  border-radius: 50px;
+  margin: 0px 5px;
+  -webkit-animation: animate 1.4s linear infinite;
+          animation: animate 1.4s linear infinite;
+}
+
+@-webkit-keyframes animate {
+  50% {
+    height: 20%;
+    background: #4286f4;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+@keyframes animate {
+  50% {
+    height: 20%;
+    background: #4286f4;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+.stroke:nth-child(1) {
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+
+.stroke:nth-child(2) {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+
+.stroke:nth-child(3) {
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+}
+
+.stroke:nth-child(4) {
+  -webkit-animation-delay: 0.9s;
+          animation-delay: 0.9s;
+}
+
+.stroke:nth-child(5) {
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+}
+
+.stroke:nth-child(6) {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+
+.stroke:nth-child(7) {
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+/*# sourceMappingURL=style.css.map */

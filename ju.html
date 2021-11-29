@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <audio src="music/Я тебя люблю.mp3" class="audio"></audio>
+    <div class="btn">Press to play</div>
+    <div class="btn2">Press to pause</div>
+
+
+    <script>
+        let audio = document.querySelector(".audio")
+        let btn = document.querySelector(".btn")
+        let btn2 = document.querySelector(".btn2")
+
+        btn.addEventListener('click', () => {
+            audio.play()
+        })
+
+        btn2.addEventListener('click', () => {
+            audio.pause()
+        })
+    </script>
+</body>
+</html>
