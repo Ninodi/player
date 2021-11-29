@@ -98,7 +98,6 @@ let playSong = () => {
     artist.innerText = songs[trackIndex].artist
     nowPlaying.innerText = `Playing ${trackIndex + 1} out of ${songs.length}`
 
-    setUpdate()
     currTrack.play();
 }
 
@@ -123,8 +122,6 @@ nextBtn.addEventListener('click', () => {
     playBtn.innerHTML = '<i class="fas fa-pause-circle play"></i>'
     imgContaier.classList.add("rotate")
     wave.classList.add('loader')
-    
-    reset()
 
     if(trackIndex < songs.length - 1){
         trackIndex += 1;
@@ -144,7 +141,6 @@ prevBtn.addEventListener('click', () => {
     imgContaier.classList.add("rotate")
     wave.classList.add('loader')
 
-    reset()
 
     if(trackIndex > 0){
         trackIndex -= 1;
@@ -157,7 +153,6 @@ prevBtn.addEventListener('click', () => {
 })
 
 repeat.addEventListener("click", () => {
-    reset()
     let currIndex = trackIndex
     currTrack.src = songs[currIndex].music
     currTrack.play()
