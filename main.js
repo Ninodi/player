@@ -17,8 +17,10 @@ let player = document.querySelector(".player")
 
 let trackSlider = document.querySelector(".trackSlider")
 let volumeSlider = document.querySelector(".volumeSlider")
-let curr_time = document.querySelector('.current-time');
-let total_duration = document.querySelector('.total-duration');
+let currTime = document.querySelector('.currentTime');
+let totalDuration = document.querySelector('.totalDuration');
+
+let muteBtn = document.querySelector(".fa-volume-off")
 
 let trackIndex = 0
 let counter = 0
@@ -98,20 +100,17 @@ shuffleBtn.addEventListener('click', () => {
 
 nowPlaying.innerText = `Playing ${trackIndex + 1} out of ${songs.length}`
 
-
 let playSong = () => {
-    setUpdate()
     currTrack.src = songs[trackIndex].music
-
     img.src = songs[trackIndex].img
     songName.innerText = songs[trackIndex].songName
     artist.innerText = songs[trackIndex].artist
     nowPlaying.innerText = `Playing ${trackIndex + 1} out of ${songs.length}`
-
+    
     currTrack.play() 
+    setUpdate()
     updateTimer = setInterval(setUpdate, 1000);
 }
-
 
 
 playBtn.addEventListener('click', () => {
@@ -127,13 +126,7 @@ playBtn.addEventListener('click', () => {
     }
 })
 
-nextBtn.addEventListener('click', () => {
-    counter++
-    randomBackground()
-    playBtn.innerHTML = '<i class="fas fa-pause-circle play"></i>'
-    imgContaier.classList.add("rotate")
-    wave.classList.add('loader')
-
+let playNext = () => {
     if(trackIndex < songs.length - 1){
         trackIndex += 1
     } else if(counter % songs.length == 0){
@@ -141,16 +134,29 @@ nextBtn.addEventListener('click', () => {
         counter = 0
     }
     playSong()
+}
 
+
+let resetPlayer = () => {
+    playBtn.innerHTML = '<i class="fas fa-pause-circle play"></i>'
+    imgContaier.classList.add("rotate")
+    wave.classList.add('loader')
+}
+
+
+nextBtn.addEventListener('click', () => {
+    counter++
+    randomBackground()
+    resetPlayer()
+    playNext()
     console.log("next " + counter)
 })
+
 
 prevBtn.addEventListener('click', () => {
     counter--
     randomBackground()
-    playBtn.innerHTML = '<i class="fas fa-pause-circle play"></i>'
-    imgContaier.classList.add("rotate")
-    wave.classList.add('loader')
+    resetPlayer()
 
 
     if(trackIndex > 0){
@@ -163,11 +169,9 @@ prevBtn.addEventListener('click', () => {
     console.log("prev " + counter)
 })
 
-repeat.addEventListener("click", () => {
-    playBtn.innerHTML = '<i class="fas fa-pause-circle play"></i>'
-    imgContaier.classList.add("rotate")
-    wave.classList.add('loader')
 
+repeat.addEventListener("click", () => {
+    resetPlayer()
     let currIndex = trackIndex
     currTrack.src = songs[currIndex].music
     currTrack.play()
@@ -181,23 +185,13 @@ trackSlider.addEventListener('change', () => {
 })
 
 volumeSlider.value = 100
-volumeSlider.addEventListener('change', () => {
-    currTrack.volume = volumeSlider.value / 100
-
-    console.log(volumeSlider.value / 100)
-})
 
 volumeSlider.addEventListener('change', () => {
     currTrack.volume = volumeSlider.value / 100
-
-    console.log(volumeSlider.value / 100)
 })
 
 
-
-
-function setUpdate(){
-    console.log('update Time')
+let setUpdate = () => {
     let seekPosition = 0;
     if(!isNaN(currTrack.duration)){
         seekPosition = currTrack.currentTime * (100 / currTrack.duration);
@@ -213,12 +207,25 @@ function setUpdate(){
         if(currentMinutes < 10) {currentMinutes = "0" + currentMinutes; }
         if(durationMinutes < 10) { durationMinutes = "0" + durationMinutes; }
 
-        curr_time.innerHTML = currentMinutes + ":" + currentSeconds;
-        total_duration.innerHTML = durationMinutes + ":" + durationMinutes;
+        currTime.innerHTML = currentMinutes + ":" + currentSeconds;
+        totalDuration.innerHTML = durationMinutes + ":" + durationMinutes;
+
+        if(trackSlider.value == 100) playNext()
+
+        
     }
 }
 
 
 
+muteBtn.addEventListener('click', () => {
+    muteBtn.classList.toggle('muted')
 
-
+    if(muteBtn.classList.contains('muted')){
+        currTrack.volume = 0
+        volumeSlider.value = 0
+    } else {
+        currTrack.volume = 1
+        volumeSlider.value = 100
+    }
+})

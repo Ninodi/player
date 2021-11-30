@@ -156,6 +156,19 @@ input {
   font-size: 40px;
 }
 
+.fa-volume-off {
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.fa-volume-off:hover {
+  color: red;
+}
+
+.fa-volume-off.muted {
+  color: red;
+}
+
 .loader {
   height: 70px;
   display: -webkit-box;
@@ -179,8 +192,8 @@ input {
   width: 10px;
   border-radius: 50px;
   margin: 0px 5px;
-  -webkit-animation: animate 1.4s linear infinite backwards;
-          animation: animate 1.4s linear infinite backwards;
+  -webkit-animation: animate 1.4s linear infinite both;
+          animation: animate 1.4s linear infinite both;
 }
 
 @-webkit-keyframes animate {
