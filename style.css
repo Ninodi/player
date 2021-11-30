@@ -115,7 +115,7 @@
           align-items: center;
 }
 
-.trackslider {
+.trackSlider {
   width: 200px;
 }
 
@@ -179,8 +179,8 @@ input {
   width: 10px;
   border-radius: 50px;
   margin: 0px 5px;
-  -webkit-animation: animate 1.4s linear infinite;
-          animation: animate 1.4s linear infinite;
+  -webkit-animation: animate 1.4s linear infinite backwards;
+          animation: animate 1.4s linear infinite backwards;
 }
 
 @-webkit-keyframes animate {

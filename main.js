@@ -15,59 +15,63 @@ let wave = document.querySelector("#wave")
 let background = document.querySelector(".playerBack")
 let player = document.querySelector(".player")
 
+let trackSlider = document.querySelector(".trackSlider")
+let volumeSlider = document.querySelector(".volumeSlider")
+let curr_time = document.querySelector('.current-time');
+let total_duration = document.querySelector('.total-duration');
 
 let trackIndex = 0
 let counter = 0
-
+let updateTimer
 
 let songs = [
     {
         img: "img/weekend.jpg",
         songName: "One Right Now",
         artist: "Post Malone, The Weekend",
-        music: "music/One Right Now.mp3"
+        music: "music/One Right Now.mp3",
     },
 
     {
         img: "img/cas.jpg",
         songName: "Crush",
         artist: "Cigarettes After Sex",
-        music: "music/Crush.mp3"
+        music: "music/Crush.mp3",
     },
 
     {
         img: "img/vansire.jpg",
         songName: "Nice To See You",
         artist: "Vansire",
-        music: "music/Nice To See You.mp3"
+        music: "music/Nice To See You.mp3",
     },
 
     {
         img: "img/videoclub.jpg",
         songName: "Mai",
         artist: "Videoclub",
-        music: "music/Mai.mp3"
+        music: "music/Mai.mp3",
     },
 
     {
         img: "img/walters.jfif",
         songName: "I Love You So",
         artist: "The Walters",
-        music: "music/I Love You So.mp3"
+        music: "music/I Love You So.mp3",
     },
 
     {
         img: "img/isaac.jpg",
         songName: "Silhouettes Of You",
         artist: "Isaac Gracie",
-        music: "music/Silhouettes Of You.mp3"
+        music: "music/Silhouettes Of You.mp3",
     },
 
     {
         img: "img/gdefantom.jpg",
         songName: "Я тебя люблю",
         artist: "Где Фантом?",
-        music: "music/Я тебя люблю.mp3"
+        music: "music/Я тебя люблю.mp3",
     }
 ]
 
@@ -84,22 +88,28 @@ let randomBackground = () => {
 shuffleBtn.addEventListener('click', () => {
     randomBackground()
     let random_index = Number.parseInt(Math.random() * songs.length);
-    trackIndex = random_index;
+    counter = random_index
+    trackIndex = random_index
     currTrack.src = songs[trackIndex].music
     playSong()
+
+    console.log("shuffle " + counter)
 })
 
 nowPlaying.innerText = `Playing ${trackIndex + 1} out of ${songs.length}`
 
+
 let playSong = () => {
-    console.log("jora")
+    setUpdate()
     currTrack.src = songs[trackIndex].music
+
     img.src = songs[trackIndex].img
     songName.innerText = songs[trackIndex].songName
     artist.innerText = songs[trackIndex].artist
     nowPlaying.innerText = `Playing ${trackIndex + 1} out of ${songs.length}`
 
-    currTrack.play();
+    currTrack.play() 
+    updateTimer = setInterval(setUpdate, 1000);
 }
 
 
@@ -110,7 +120,7 @@ playBtn.addEventListener('click', () => {
 
     if(document.querySelector(".playbtn i").classList.contains("pause")){
         playBtn.innerHTML = '<i class="fas fa-pause-circle play"></i>'
-        currTrack.play();
+        currTrack.play()
     } else {
         playBtn.innerHTML = '<i class="fa fa-play-circle fa-5x pause"></i>'
         currTrack.pause()
@@ -125,14 +135,14 @@ nextBtn.addEventListener('click', () => {
     wave.classList.add('loader')
 
     if(trackIndex < songs.length - 1){
-        trackIndex += 1;
+        trackIndex += 1
     } else if(counter % songs.length == 0){
-        trackIndex = 0;
-        counter = 0;
+        trackIndex = 0
+        counter = 0
     }
     playSong()
 
-    console.log(counter)
+    console.log("next " + counter)
 })
 
 prevBtn.addEventListener('click', () => {
@@ -150,7 +160,7 @@ prevBtn.addEventListener('click', () => {
     }
     playSong()
 
-    console.log(counter)
+    console.log("prev " + counter)
 })
 
 repeat.addEventListener("click", () => {
@@ -161,6 +171,54 @@ repeat.addEventListener("click", () => {
     let currIndex = trackIndex
     currTrack.src = songs[currIndex].music
     currTrack.play()
+    console.log("repeat " + counter)
 })
+
+
+trackSlider.addEventListener('change', () => {
+    let seekto = currTrack.duration * (trackSlider.value / 100)
+    currTrack.currentTime = seekto
+})
+
+volumeSlider.value = 100
+volumeSlider.addEventListener('change', () => {
+    currTrack.volume = volumeSlider.value / 100
+
+    console.log(volumeSlider.value / 100)
+})
+
+volumeSlider.addEventListener('change', () => {
+    currTrack.volume = volumeSlider.value / 100
+
+    console.log(volumeSlider.value / 100)
+})
+
+
+
+
+function setUpdate(){
+    console.log('update Time')
+    let seekPosition = 0;
+    if(!isNaN(currTrack.duration)){
+        seekPosition = currTrack.currentTime * (100 / currTrack.duration);
+        trackSlider.value = seekPosition;
+
+        let currentMinutes = Math.floor(currTrack.currentTime / 60);
+        let currentSeconds = Math.floor(currTrack.currentTime - currentMinutes * 60);
+        let durationMinutes = Math.floor(currTrack.duration / 60);
+        let durationSeconds = Math.floor(currTrack.duration - durationMinutes * 60);
+
+        if(currentSeconds < 10) {currentSeconds = "0" + currentSeconds; }
+        if(durationSeconds < 10) { durationSeconds = "0" + durationSeconds; }
+        if(currentMinutes < 10) {currentMinutes = "0" + currentMinutes; }
+        if(durationMinutes < 10) { durationMinutes = "0" + durationMinutes; }
+
+        curr_time.innerHTML = currentMinutes + ":" + currentSeconds;
+        total_duration.innerHTML = durationMinutes + ":" + durationMinutes;
+    }
+}
+
+
+
 
 
