@@ -188,6 +188,8 @@ volumeSlider.value = 100
 
 volumeSlider.addEventListener('change', () => {
     currTrack.volume = volumeSlider.value / 100
+
+    if(volumeSlider.value != 0) muteBtn.classList.remove('muted')
 })
 
 
@@ -228,4 +230,5 @@ muteBtn.addEventListener('click', () => {
         currTrack.volume = 1
         volumeSlider.value = 100
     }
+
 })
