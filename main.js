@@ -74,6 +74,13 @@ let songs = [
         songName: "Я тебя люблю",
         artist: "Где Фантом?",
         music: "music/Я тебя люблю.mp3",
+    },
+
+    {
+        img: "img/matt.jpg",
+        songName: "As the World Caves In",
+        artist: "Matt Maltese",
+        music: "music/As the World Caves In.mp3",
     }
 ]
 
@@ -86,17 +93,6 @@ let randomBackground = () => {
     player.style.backgroundColor = bgColor
 }
 
-
-shuffleBtn.addEventListener('click', () => {
-    randomBackground()
-    let random_index = Number.parseInt(Math.random() * songs.length);
-    counter = random_index
-    trackIndex = random_index
-    currTrack.src = songs[trackIndex].music
-    playSong()
-
-    console.log("shuffle " + counter)
-})
 
 nowPlaying.innerText = `Playing ${trackIndex + 1} out of ${songs.length}`
 
@@ -142,6 +138,18 @@ let resetPlayer = () => {
     imgContaier.classList.add("rotate")
     wave.classList.add('loader')
 }
+
+
+shuffleBtn.addEventListener('click', () => {
+    randomBackground()
+    let random_index = Number.parseInt(Math.random() * songs.length);
+    counter = random_index
+    trackIndex = random_index
+    currTrack.src = songs[trackIndex].music
+    playSong()
+
+    console.log("shuffle " + counter)
+})
 
 
 nextBtn.addEventListener('click', () => {
